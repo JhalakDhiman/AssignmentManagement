@@ -52,7 +52,7 @@ function StudentDashboard() {
               <CardTitle className="text-sm font-medium text-muted-foreground">Total Assignments</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{progress.total}</div>
+              <div className="text-2xl text-richblack-600 font-bold">{progress.total}</div>
             </CardContent>
           </Card>
           <Card>

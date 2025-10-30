@@ -1,7 +1,7 @@
 "use client"
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import { Button } from "../components/ui/button"
+import { Progress }  from "../components/ui/progress"
 
 function SubmissionProgressCard({ assignment, submission, onSubmit, onProgressUpdate }) {
 
@@ -22,6 +22,7 @@ function SubmissionProgressCard({ assignment, submission, onSubmit, onProgressUp
             <span className="text-muted-foreground">Progress</span>
             <span className="font-medium">{submission?.progress || 0}%</span>
           </div>
+          <Progress value={submission?.progress || 0} className="h-2" />
           <div className="w-full bg-secondary rounded-full h-2">
             <div
               className="bg-primary h-2 rounded-full transition-all"
@@ -40,7 +41,7 @@ function SubmissionProgressCard({ assignment, submission, onSubmit, onProgressUp
 
         <div className="text-sm space-y-1">
           <p className="text-muted-foreground">Status</p>
-          <p className={`font-medium ${isSubmitted ? "text-green-600" : "text-yellow-600"}`}>
+          <p className={`font-medium ${isSubmitted ? " text-caribbeangreen-400" : "text-yellow-100"}`}>
             {submission?.status === "graded"
               ? "Graded"
               : isSubmitted
@@ -62,14 +63,6 @@ function SubmissionProgressCard({ assignment, submission, onSubmit, onProgressUp
         <div className="flex gap-2 flex-col sm:flex-row">
           {!isSubmitted && (
             <>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={submission?.progress || 0}
-                onChange={(e) => onProgressUpdate(parseInt(e.target.value))}
-                className="flex-1"
-              />
               <Button onClick={onSubmit} className="sm:w-auto">
                 Submit
               </Button>
